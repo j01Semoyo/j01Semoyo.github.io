@@ -13,7 +13,7 @@
       $.get(server, (data, status) => {
         // console.log(data);
         if(status !== "success") return
-        const dat = JSON.parse(data).data;
+        const dat = JSON.parse(data);
         const v = dat.filter(e=>{return e[0] == p});
 
         if(v.length){
