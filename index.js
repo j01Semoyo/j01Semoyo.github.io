@@ -18,3 +18,7 @@ fs.writeFileSync(path,JSON.stringify(data,null,4),"utf8",(e)=>{
   
 // })
 
+// static
+app.use(express.static("public"));
+
+app.get

@@ -7,16 +7,17 @@
   </body>
   <script>
     function redirect(){
-      const server = "https://raw.githubusercontent.com/j01Semoyo/j01Semoyo.github.io/master/data.json";
+      const server = "https://script.google.com/macros/s/AKfycbxPbyVQWGAzvqs4swZB_ApF87ROOsxFTGu9qNpqtPMJ7fVIvVSp/exec";
       const params = new URLSearchParams(document.location.search),
           p = params.get("p");
       $.get(server, (data, status) => {
         // console.log(data);
+        if(status !== "success") return
         const dat = JSON.parse(data).data;
-        const v = dat.filter(e=>{return e.key == p});
+        const v = dat.filter(e=>{return e[0] == p});
 
         if(v.length){
-          document.location.href = v[0].url;
+          document.location.href = v[0][1];
         }
 
       })
