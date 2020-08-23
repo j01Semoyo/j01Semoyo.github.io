@@ -10,14 +10,14 @@
       const server = "https://script.google.com/macros/s/AKfycbxPbyVQWGAzvqs4swZB_ApF87ROOsxFTGu9qNpqtPMJ7fVIvVSp/exec";
       const params = new URLSearchParams(document.location.search),
           p = params.get("p");
-      $.get(server, (data, status) => {
+      $.get(`${server}?q=${p}`, (data, status) => {
         // console.log(data);
         if(status !== "success") return
         const dat = JSON.parse(data);
-        const v = dat.filter(e=>{return e[0] == p});
+        // const v = dat.filter(e=>{return e[0] == p});
 
         if(v.length){
-          document.location.href = v[0][1];
+          document.location.href = dat[0][1];
         }
 
       })
